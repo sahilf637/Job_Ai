@@ -1,0 +1,100 @@
+version: '3.8'
+services:
+  db:
+    image: mysql:8
+    container_name: interview_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: interview_backend
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - "5000:5000"
+    environment:
+      DB_HOST: db
+      DB_USER: root
+      DB_PASSWORD: root
+      DB_NAME: interview_scheduler
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    working_dir: /app
+    command: ["./wait-for-it.sh", "db:3306", "--", "node", "index.js"]
+
+volumes:
+  mysql_data:
+
+
+# version: '3.8'
+
+# services:
+#   db:
+#     image: mysql:8
+#     container_name: interview_db
+#     restart: always
+#     environment:
+#       MYSQL_ROOT_PASSWORD: root
+#     ports:
+#       - "3307:3306"
+#     volumes:
+#       - mysql_data:/var/lib/mysql
+
+#   backend:
+#     build:
+#       context: ./backend
+#       dockerfile: Dockerfile
+#     container_name: interview_backend
+#     restart: always
+#     depends_on:
+#       - db
+#     ports:
+#       - "5000:5000"
+#     environment:
+#       DB_HOST: db
+#       DB_USER: root
+#       DB_PASSWORD: root
+#       DB_NAME: interview_scheduler
+#     volumes:
+#       - ./backend:/app
+#       - /app/node_modules
+#     working_dir: /app
+#     command: ["./wait-for-it.sh", "db:3306", "--", "node", "index.js"]
+
+#   voice-agent:
+#     build:
+#       context: ./voice-agent
+#       dockerfile: Dockerfile
+#     container_name: interview_voice_agent
+#     restart: always
+#     depends_on:
+#       - db
+#     ports:
+#       - "5001:5001"
+#     environment:
+#       DB_HOST: db
+#       DB_USER: root
+#       DB_PASSWORD: root
+#       DB_NAME: interview_scheduler
+#       TTS_API: "http://mozilla-tts:5002"
+#       STT_API: "http://vosk-api:5003"
+#       NLP_API: "https://api.groq.com/v1/nlp"
+#     volumes:
+#       - ./voice-agent:/app
+#       - /app/node_modules
+#     working_dir: /app
+#     command: ["node", "server.js"]
+
+# volumes:
+#   mysql_data:
+
