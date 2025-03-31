@@ -1,0 +1,24 @@
+version: "2.0"
+
+stories:
+- story: Interview Data Collection Flow
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_question_ctc
+  - intent: answer
+    entities:
+      - ctc: "10 LPA"
+  - action: action_send_entities_to_backend
+  - action: utter_question_notice
+  - intent: answer
+    entities:
+      - notice_period: "2 months"
+  - action: action_send_entities_to_backend
+  - action: utter_question_interview
+  - intent: answer
+    entities:
+      - date: "Tuesday"
+      - time: "10 AM"
+  - action: action_send_entities_to_backend
+  - action: utter_thanks

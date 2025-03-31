@@ -1,0 +1,44 @@
+version: "2.0"
+
+nlu:
+- intent: greet
+  examples: |
+    - Hi
+    - Hello
+    - Hey there
+
+- intent: job_interest
+  examples: |
+    - Yes, I'm interested
+    - I’d love to know more
+    - No, thank you
+
+- intent: notice_period
+  examples: |
+    - My notice period is 2 months
+    - I’m available immediately
+    - 1 month notice
+
+- intent: ctc
+  examples: |
+    - My current CTC is 10 LPA
+    - I expect 15 LPA
+    - 8 LPA currently, expecting 12 LPA
+
+- intent: availability
+  examples: |
+    - I’m free next Tuesday
+    - Anytime after 5 PM works
+    - I’m available on Monday at 3 PM
+
+- intent: confirm_booking
+  examples: |
+    - Yes, that works for me
+    - Perfect, see you then
+    - Can we reschedule?
+
+- intent: faq
+  examples: |
+    - What’s the job about?
+    - What are the responsibilities?
+    - Tell me about the company

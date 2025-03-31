@@ -1,0 +1,5 @@
+rasa
+rasa-sdk
+spacy
+sklearn-crfsuite
+requests

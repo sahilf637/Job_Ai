@@ -1,0 +1,52 @@
+version: "2.0"
+
+intents:
+  - greet
+  - answer
+
+entities:
+  - ctc
+  - notice_period
+  - date
+  - time
+
+slots:
+  ctc:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: ctc
+      - type: from_text
+  notice_period:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: notice_period
+      - type: from_text
+  date:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: date
+      - type: from_text
+  time:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: time
+      - type: from_text
+
+responses:
+  utter_greet:
+    - text: "Hello, welcome to the interview process."
+  utter_question_ctc:
+    - text: "What is your current and expected CTC?"
+  utter_question_notice:
+    - text: "What is your current notice period?"
+  utter_question_interview:
+    - text: "When are you available for an interview next week?"
+  utter_thanks:
+    - text: "Thank you for your responses. We will get back to you."
+
+actions:
+  - action_send_entities_to_backend

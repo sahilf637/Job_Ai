@@ -1,0 +1,54 @@
+{
+  "type": "MaxHistoryTrackerFeaturizer",
+  "state_featurizer": {
+    "action_texts": [],
+    "entity_tag_specs": [],
+    "feature_states": {
+      "intent": {
+        "answer": 0,
+        "back": 1,
+        "greet": 2,
+        "nlu_fallback": 3,
+        "out_of_scope": 4,
+        "restart": 5,
+        "session_start": 6
+      },
+      "action_name": {
+        "action_listen": 0,
+        "action_restart": 1,
+        "action_session_start": 2,
+        "action_default_fallback": 3,
+        "action_deactivate_loop": 4,
+        "action_revert_fallback_events": 5,
+        "action_default_ask_affirmation": 6,
+        "action_default_ask_rephrase": 7,
+        "action_two_stage_fallback": 8,
+        "action_unlikely_intent": 9,
+        "action_back": 10,
+        "...": 11,
+        "action_extract_slots": 12,
+        "action_send_entities_to_backend": 13,
+        "utter_greet": 14,
+        "utter_question_ctc": 15,
+        "utter_question_interview": 16,
+        "utter_question_notice": 17,
+        "utter_thanks": 18
+      },
+      "entities": {
+        "ctc": 0,
+        "date": 1,
+        "notice_period": 2,
+        "time": 3
+      },
+      "slots": {
+        "ctc_0": 0,
+        "notice_period_0": 1,
+        "date_0": 2,
+        "time_0": 3
+      },
+      "active_loop": {}
+    }
+  },
+  "remove_duplicates": true,
+  "max_history": 5
+}
